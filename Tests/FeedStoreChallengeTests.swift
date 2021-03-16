@@ -5,7 +5,7 @@
 import XCTest
 import FeedStoreChallenge
 
-class CoreDataFeedStore: FeedStore {
+class InMemoryFeedStore: FeedStore {
 	
 	func deleteCachedFeed(completion: @escaping DeletionCompletion) { }
 	
@@ -106,7 +106,7 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	// - MARK: Helpers
 	
 	private func makeSUT() throws -> FeedStore {
-		return CoreDataFeedStore()
+		return InMemoryFeedStore()
 		
 	}
 	
