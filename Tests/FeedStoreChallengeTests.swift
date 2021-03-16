@@ -5,7 +5,7 @@
 import XCTest
 import FeedStoreChallenge
 
-public class InMemoryFeedStore: FeedStore {
+public final class InMemoryFeedStore: FeedStore {
 	private struct Cache {
 		let feedImages: [LocalFeedImage]
 		let timestamp: Date
