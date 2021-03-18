@@ -19,7 +19,7 @@ public final class InMemoryFeedStore: FeedStore {
 	public init() { }
 	
 	public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-		queue.async { [weak self] in
+		queue.async(flags: .barrier) { [weak self] in
 			guard let self = self else { return }
 			
 			self.cache = nil
@@ -28,7 +28,7 @@ public final class InMemoryFeedStore: FeedStore {
 	}
 	
 	public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-		queue.async { [weak self] in
+		queue.async(flags: .barrier) { [weak self] in
 			guard let self = self else { return }
 			
 			self.cache = Cache(feedImages: feed, timestamp: timestamp)
